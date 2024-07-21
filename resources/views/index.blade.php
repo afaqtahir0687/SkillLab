@@ -6,9 +6,9 @@
           <div class="card border-0 h-100 card-shadow p-3">
               <div class="row align-items-center">
                   <div class="col-md-7">
-                      <h4 class="mb-0 mt-2 heading text-start card-title">
-                          Good Morning, William Castillo!
-                      </h4>
+                    <h4 id="greeting" class="mb-0 mt-2 heading text-start card-title">
+                      Good Morning, Afaq Tahir!
+                    </h4>                  
                       <p>Here’s what happening with your store today!</p>
                       <div class="mt-4">
                           <h6 class="mb-0 sales-amount text-dark">$1040.00</h6>
@@ -20,7 +20,7 @@
                       </div>
                   </div>
                   <div class="col-md-5">
-                      <img src="dasheets/img/overview.png" class="img-fluid" alt="" />
+                      <img src="{{ asset('assets/img/overview.png') }}" class="img-fluid" alt="" />
                   </div>
               </div>
           </div>
@@ -30,7 +30,7 @@
               <div class="col-md-6 mt-4">
                   <a href="sale.html" class="text-decoration-none">
                       <div class="card-shadow border rounded d-flex align-items-center p-3">
-                          <img src="dasheets/img/content-sale.svg" class="img-fluid text-center"
+                          <img src="{{ asset('assets/img/content-sale.svg') }}" class="img-fluid text-center"
                               alt="" />
                           <div class="ms-3">
                               <p class="mb-1 fs-6 text-muted subheading">Sale</p>
@@ -42,7 +42,7 @@
               <div class="col-md-6 mt-4">
                   <a href="purchase.html" class="text-decoration-none">
                       <div class="card-shadow border rounded d-flex align-items-center p-3">
-                          <img src="dasheets/img/content-bag.svg" class="img-fluid text-center"
+                          <img src="{{ asset('assets/img/content-bag.svg') }}" class="img-fluid text-center"
                               alt="" />
                           <div class="ms-3">
                               <p class="mb-1 text-muted subheading">Purchase</p>
@@ -56,7 +56,7 @@
               <div class="col-md-6 mt-4">
                   <a href="#" class="text-decoration-none">
                       <div class="card-shadow border rounded d-flex align-items-center p-3">
-                          <img src="dasheets/img/content-right-arrow.svg" class="img-fluid text-center"
+                          <img src="{{ asset('assets/img/content-right-arrow.svg') }}" class="img-fluid text-center"
                               alt="" />
                           <div class="ms-3">
                               <p class="mb-1 fs-6 text-muted subheading">
@@ -70,7 +70,7 @@
               <div class="col-md-6 mt-4">
                   <a href="#" class="text-decoration-none">
                       <div class="card-shadow border rounded d-flex align-items-center p-3">
-                          <img src="dasheets/img/content-left-arrow.svg" class="img-fluid text-center"
+                          <img src="{{ asset('assets/img/content-left-arrow.svg') }}" class="img-fluid text-center"
                               alt="" />
                           <div class="ms-3">
                               <p class="mb-1 fs-6 text-muted subheading">
@@ -182,7 +182,7 @@
         />
       </div> -->
                       <span class="calendar-icon rounded-3 me-1">Today</span>
-                      <img src="dasheets/img/calendar.svg" class="calendar-icon rounded-3 me-1"
+                      <img src="{{ asset('assets/img/calendar.svg') }}" class="calendar-icon rounded-3 me-1"
                           alt="" data-bs-toggle="modal" data-bs-target="#myModal"
                           style="cursor: pointer" />
                       <div class="calendar-icon fs-6 me-2 rounded-3 chart-days">
@@ -204,7 +204,7 @@
                   <h5 class="text-start mt-2 pb-2 heading ps-3">
                       This Month top selling Products
                   </h5>
-                  <img src="dasheets/img/help-icon.svg" class="img-fluid" alt="" />
+                  <img src="{{ asset('assets/img/help-icon.svg') }}" class="img-fluid" alt="" />
               </div>
               <div class="card-body h-100 px-0">
                   <div class="table-responsive">
@@ -524,4 +524,28 @@ style="display: none" aria-hidden="true">
   </div>
 </div>
 </div>
+
+
+<script>
+    // Function to update the greeting based on current time
+    function updateGreeting() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+
+        var greetingElement = document.getElementById('greeting');
+
+        if (hours >= 5 && hours < 12) {
+            greetingElement.textContent = "Good Morning, Afaq Tahir!";
+        } else if (hours >= 12 && hours < 14) {
+            greetingElement.textContent = "Good Afternoon, Afaq Tahir!";
+        } else if (hours >= 14 && hours < 18) {
+            greetingElement.textContent = "Good Evening, Afaq Tahir!";
+        } else {
+            greetingElement.textContent = "Good Night, Afaq Tahir!";
+        }
+    }
+    // Call the function initially when the page loads
+    updateGreeting();
+</script>
 @endsection
