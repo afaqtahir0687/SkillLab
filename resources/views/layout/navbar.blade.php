@@ -50,7 +50,7 @@ style="height: 80px">
                 <i class="fa-solid fa-user"></i> &nbsp; My Profile
             </a>
              <a href="profilesetting.html" class="dropdown-item"> <i class="fa-solid fa-gear"></i> &nbsp; Settings</a>
-            <a href="#" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> &nbsp; Log Out</a>
+            <a href="{{ url('logout') }}" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> &nbsp; Log Out</a>
         </div>
     </div>
 </div>

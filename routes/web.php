@@ -36,5 +36,9 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::get('verify/{id}', [EmailVerifyController::class, 'verifyEmail']);
 
+Route::middleware('auth')->group(function () {
+    Route::get('dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::get('dashboard',[App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+});

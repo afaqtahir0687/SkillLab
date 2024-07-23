@@ -9,9 +9,9 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function dashboard()
     {
-        return view('index');
+        return view('dashboard');
     }
 
     /**
