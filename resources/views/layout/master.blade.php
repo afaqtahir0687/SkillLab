@@ -45,6 +45,16 @@
         <!-- Sidebar End -->
 
         <!-- Content Start -->
+        @if(session()->has('message'))
+        <div id="success-message" class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+        @endif
+        @if(session()->has('error'))
+        <div id="error-message" class="alert alert-danger">
+            {{ session()->get('error') }}
+        </div>
+        @endif
         <div class="content">
             <!-- Navbar Start -->
             @include('layout.navbar')
@@ -75,51 +85,26 @@
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <!-- Template Javascript -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
-
-    <script>
-        // Chart Data
-        var ctx = document.getElementById("barChart").getContext("2d");
-        var myChart = new Chart(ctx, {
-            type: "bar",
-            data: {
-                labels: [
-                    "02 Feb",
-                    "02 Feb",
-                    "02 Feb",
-                    "02 Feb",
-                    "02 Feb",
-                    "02 Feb",
-                    "02 Feb",
-                ],
-                datasets: [{
-                        label: "Sales",
-                        data: [12, 19, 3, 5, 2, 3, 7],
-                        backgroundColor: "rgba(98, 95, 237, 1)",
-                        // borderColor: "rgba(255, 99, 132, 1)",
-                        // borderWidth: 1,
-                    },
-                    {
-                        label: "Purchase",
-                        data: [5, 8, 15, 10, 7, 6, 4],
-                        backgroundColor: "rgba(155, 153, 243, 1)",
-                        // borderColor: "rgba(54, 162, 235, 1)",
-                        // borderWidth: 1,
-                    },
-                ],
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                    },
-                },
-                responsive: true, // Make the chart responsive
-                maintainAspectRatio: false, // Disable aspect ratio
-            },
-        });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                setTimeout(function() {
+                    successMessage.style.display = 'none';
+                }, 10000); // 10000 milliseconds = 10 seconds
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            var errorMessage = document.getElementById('error-message');
+            if (errorMessage) {
+                setTimeout(function() {
+                    errorMessage.style.display = 'none';
+                }, 10000); // 10000 milliseconds = 10 seconds
+            }
+        });
+    </script>
 </body>
 
 </html>
