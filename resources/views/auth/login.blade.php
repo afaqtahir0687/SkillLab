@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Sale and Purchase - Register</title>
+    <title>Skill Lab</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/skill-lab.jpeg') }}" >
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
@@ -51,7 +52,10 @@
                 @endif
               <div class="mb-5">
                 <h2>Sign in</h2>
-                <p>Please enter your credentials</p>
+                <div class="d-flex align-items-center">
+                  <p class="me-3 login-box-msg text-white">Use your email and password to login</p>
+                  <img src="{{ asset('assets/img/skill-lab.jpeg') }}" class="img-fluid rounded-circle col-md-3" alt="" />
+              </div>
               </div>
               <form class="signup-input mt-4" action="{{ route('login.save') }}" method="POST">
                 @csrf              
@@ -73,7 +77,7 @@
                 </div>
                 <div class="row text-white keep-me-logged">
                   <div class="col-md-6 d-flex mt-3">
-                    <input type="checkbox" class="checkboxing" name="" id="" />
+                    <input type="checkbox" class="checkboxing" name="remember" id="remember" />
                     <span>Keep me singed in</span>
                   </div>
 
@@ -86,6 +90,10 @@
                 <button class="btn save-btn text-white p-3 w-100 mt-4">
                   Sign Up
                 </button>
+                <a href="{{ url('register') }}" class="btn save-btn text-white p-2 w-100 mt-3">
+                  Register
+                </a>
+                
               </form>
             </div>
           </div>
@@ -141,23 +149,19 @@
         }
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var successMessage = document.getElementById('success-message');
-            if (successMessage) {
-                setTimeout(function() {
-                    successMessage.style.display = 'none';
-                }, 10000); // 10000 milliseconds = 10 seconds
-            }
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            var errorMessage = document.getElementById('error-message');
-            if (errorMessage) {
-                setTimeout(function() {
-                    errorMessage.style.display = 'none';
-                }, 10000); // 10000 milliseconds = 10 seconds
-            }
-        });
-    </script>
+      function togglePasswordVisibility(fieldId) {
+          var passwordField = document.getElementById(fieldId);
+          var passwordToggle = passwordField.nextElementSibling.querySelector('.password-toggle');
+
+          if (passwordField.type === 'password') {
+              passwordField.type = 'text';
+              passwordToggle.src = '{{ asset('assets/img/unlock.svg') }}'; // Change to your unlock icon
+          } else {
+              passwordField.type = 'password';
+              passwordToggle.src = '{{ asset('assets/img/lock.svg') }}'; // Change to your lock icon
+          }
+      }
+  </script>
     
   </body>
 </html>

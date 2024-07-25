@@ -46,10 +46,10 @@ style="height: 80px">
                 style="width: 50px; height: 50px" />
         </a>
         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-            <a href="profile.html" class="dropdown-item">
+            <a href="{{ url('profile') }}" class="dropdown-item">
                 <i class="fa-solid fa-user"></i> &nbsp; My Profile
             </a>
-             <a href="profilesetting.html" class="dropdown-item"> <i class="fa-solid fa-gear"></i> &nbsp; Settings</a>
+             <a href="#" class="dropdown-item"> <i class="fa-solid fa-gear"></i> &nbsp; Settings</a>
             <a href="{{ url('logout') }}" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> &nbsp; Log Out</a>
         </div>
     </div>

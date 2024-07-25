@@ -5,7 +5,6 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\EmailVerifyController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +25,8 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'registerSave')->name('register.save');
 });
 
+Route::get('verify/{id}', [EmailVerifyController::class, 'verifyEmail']);
+
 Route::controller(LoginController::class)->group(function () {
     Route::get('/', 'login')->name('login');
     Route::post('login', 'loginAction')->name('login.save');
@@ -34,11 +35,17 @@ Route::controller(LoginController::class)->group(function () {
 
 });
 
-Route::get('verify/{id}', [EmailVerifyController::class, 'verifyEmail']);
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['verified','auth'])->group(function () {
     Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+
+    Route::controller(AuthController::class)->group(function () {
+        Route::get('profile', 'profile')->name('profile');
+        Route::get('editprofile/{id}', 'profile')->name('edit.profile');
+        Route::post('updateprofile/{id}', 'updateprofile')->name('update.profile');
+    });
 
 });

@@ -27,7 +27,7 @@ class EmailVerifyController extends Controller
             $user->email_verified_at = now()->toDateTimeString();
             $user->save();   
             // dd($user); 
-            return redirect('/')->with('message', 'Your email has been verified. Your login');
+            return redirect('/')->with('message', 'Your email has been verified. Please login');
         } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
             return redirect('/')->with('error', 'Invalid verification link.');
         }

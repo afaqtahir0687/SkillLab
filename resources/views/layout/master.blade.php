@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Sale and Purchase - Dashboard</title>
+    <title>Skill Lab</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/skill-lab.jpeg') }}" >
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />

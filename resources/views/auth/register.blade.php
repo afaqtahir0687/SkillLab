@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Sale and Purchase - Register</title>
+    <title>Skill Lab</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/skill-lab.jpeg') }}" >
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
@@ -31,7 +32,10 @@
                     <div class="signup-form text-white">
                         <div class="mb-5">
                             <h2>Sign Up</h2>
-                            <p>Create your account to get started</p>
+                            <div class="d-flex align-items-center">
+                                <p class="me-3">Create your account to get started</p>
+                                <img src="{{ asset('assets/img/skill-lab.jpeg') }}" class="img-fluid rounded-circle col-md-3" alt="" />
+                            </div>
                         </div>
                         <form class="signup-input mt-4" action="{{ route('register.save') }}" method="POST">
                             @csrf
@@ -59,7 +63,7 @@
                                     onclick="togglePasswordVisibility('password-field')" alt="Toggle Password" />
                             </div>
                             <div class="password-container">
-                                <input type="retype_password" class="password-input form-control subheading" name="retype_password"
+                                <input type="password" class="password-input form-control subheading" name="retype_password"
                                     placeholder="Retype Password" id="retype-password-field" />
                                 @error('retype_password')
                                     <span class="text-info">{{ $message }}</span>
@@ -70,11 +74,21 @@
                             <div class="number-container">
                                 <input type="number" class="form-control" name="phone_number"
                                     placeholder="Phone" required />
-                                @if ($errors->has('name'))
+                                @if ($errors->has('phone'))
                                     <span class="text-info">{{ $errors->first('number') }}</span>
                                 @endif
                             </div>
+                            <div class="image-container">
+                                <input type="file" class="form-control" name="image" style="height:36px" accept="image/*" />
+                                @if ($errors->has('image'))
+                                    <span class="text-danger">{{ $errors->first('image') }}</span>
+                                @endif
+                            </div>
+                            
                             <button class="btn save-btn text-white p-3 w-100 mt-4">Sign Up</button>
+                            <a href="{{ url('/') }}" class="btn save-btn text-white p-2 w-100 mt-3">
+                                Login
+                            </a>
                         </form>
                     </div>
                 </div>
