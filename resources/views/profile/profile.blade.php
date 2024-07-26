@@ -59,8 +59,8 @@
         <!-- Sidebar Start -->
         <div class="sidebar pb-3">
             <nav class="navbar navbar-light">
-                <a href="index.html" class="navbar-brand ms-3">
-                    <h3 class="text-primary">LOGO</h3>
+                <a href="{{ url('dashboard') }}" class="navbar-brand ms-3" style="font-size: 40px; margin-right: 30px;">
+                    <i class="fa-solid fa-face-smile text-primary"></i>
                 </a>
 
                 <div class="navbar-nav">
@@ -626,32 +626,27 @@
 
             <div class="container-fluid pt-4 px-4 mb-5 main-footer">
                 <div class="bg-footer rounded-top-5 p-3">
-                    <p class="fw-bold">ITSOL - Inventory and Stock Management</p>
+                    <p class="fw-bold">Skill Lab - Management System</p>
                     <div class="row">
                         <div class="col-md-6 align-items-center align-middle">
                             <div class="d-flex align-items-center">
-                                <img src="assets/img/itsol.png" class="img-fluid" alt="" />
+                                <img src="dasheets/img/itsol.png" class="img-fluid" alt="" />
                                 <div class="ms-2">
-                                    <p class="m-0">© 2024 Developed by ITSOL</p>
-                                    <p class="m-0">All right reserved - v2</p>
+                                    <p class="m-0">© 2024 Developed by Afaq Tahir</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 text-end">
+                            <a href="https://www.linkedin.com/in/afaq-tahir0687" target="_blank">
+                                <img src="{{ asset('assets/img/footer-linkedin.svg') }}" alt="LinkedIn Profile">
+                            </a>
                             <a href="#" class="text-decoration-none"><img
-                                    src="assets/img/footer-linkedin.svg" class="img-fluid me-2"
-                                    alt="linkedin" /></a>
-                            <a href="#" class="text-decoration-none"><img
-                                    src="assets/img/footer-facebook.svg" class="img-fluid me-2"
+                                    src="{{ asset('assets/img/footer-facebook.svg') }}" class="img-fluid me-2"
                                     alt="facebook" /></a>
-                            <a href="#" class="text-decoration-none"><img src="assets/img/footer-twitch.svg"
-                                    class="img-fluid me-2" alt="Twitch" /></a>
-                            <a href="#" class="text-decoration-none"><img src="assets/img/footer-twitter.svg"
-                                    class="img-fluid me-2" alt="Twitter" /></a>
                         </div>
                     </div>
                 </div>
-            </div>
+              </div>
         </div>
         <!-- Recent Sales End -->
     </div>

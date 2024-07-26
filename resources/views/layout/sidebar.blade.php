@@ -1,11 +1,11 @@
 <div class="sidebar pb-3">
     <nav class="navbar navbar-light">
-        <a href="{{ url('/') }}" class="navbar-brand ms-3" style="font-size: 40px; margin-right: 30px;">
+        <a href="{{ url('dashboard') }}" class="navbar-brand ms-3" style="font-size: 40px; margin-right: 30px;">
             <i class="fa-solid fa-face-smile text-primary"></i>
         </a>
 
         <div class="navbar-nav">
-            <a href="{{ url('/') }}" class="nav-item nav-link active text-center border-top">
+            <a href="{{ url('dashboard') }}" class="nav-item nav-link active text-center border-top">
                 <i class="bi bi-grid"></i>
                 <p class="pt-1 mb-0">Dashboard</p>
             </a>
