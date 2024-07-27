@@ -65,29 +65,29 @@
     <div id="product" style="display: none">
         <ul class="list-unstyled m-0 px-4 rounded-5">
             <li>
-                <a href="product.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />All Product</a>
+                <a href="{{ url('products') }}" class="text-decoration-none nav-item nav-link"><img
+                        src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-2" alt="" />All Product</a>
             </li>
             <li class="mb-2">
-                <a href="createproduct.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create
+                <a href="{{ route('products.create') }}" class="text-decoration-none nav-item nav-link"><img
+                        src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-2" alt="" />Create
                     Product</a>
             </li>
             <li class="mb-2">
                 <a href="printlable.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Print Label</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Print Label</a>
             </li>
             <li class="mb-2">
-                <a href="category.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Category</a>
+                <a href="{{ route('category.index') }}" class="text-decoration-none nav-item nav-link"><img
+                        src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-2" alt="" />Category</a>
             </li>
             <li class="mb-2">
                 <a href="brand.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Brand</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Brand</a>
             </li>
             <li class="mb-2">
                 <a href="unit.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Unit</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Unit</a>
             </li>
         </ul>
     </div>
@@ -95,24 +95,24 @@
         <ul class="list-unstyled m-0 py-3 px-4 rounded-5">
             <li class="mb-2">
                 <a href="sale.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />All Sale</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />All Sale</a>
             </li>
             <li class="mb-2">
                 <a href="createsale.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create Sale</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Create Sale</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create Sale
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Create Sale
                     Order</a>
             </li>
             <li class="mb-2">
                 <a href="pos.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />POS</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />POS</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create Sale
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Create Sale
                     Return</a>
             </li>
         </ul>
@@ -121,21 +121,21 @@
         <ul class="list-unstyled m-0 py-3 px-4 rounded-5">
             <li class="mb-2">
                 <a href="purchase.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />All Purchase</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />All Purchase</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Create
                     Purchase</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create Purchase
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Create Purchase
                     Order</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create Purchase
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Create Purchase
                     Return</a>
             </li>
         </ul>
@@ -144,16 +144,16 @@
         <ul class="list-unstyled m-0 py-3 px-4 rounded-5">
             <li class="mb-2">
                 <a href="inventory.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />All Inventory</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />All Inventory</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Recieve
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Recieve
                     Inventory</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create Bill</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Create Bill</a>
             </li>
         </ul>
     </div>
@@ -161,11 +161,11 @@
         <ul class="list-unstyled m-0 py-3 px-4 rounded-5">
             <li class="mb-2">
                 <a href="alltransfer.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />All Transfer</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />All Transfer</a>
             </li>
             <li class="mb-2">
                 <a href="createtransfer.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Create
                     Transfer</a>
             </li>
         </ul>
@@ -174,39 +174,39 @@
         <ul class="list-unstyled m-0 py-3 px-4 rounded-5">
             <li class="mb-2">
                 <a href="listaccount.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />List Accounts</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />List Accounts</a>
             </li>
             <li class="mb-2">
                 <a href="transfermoney.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Transfer
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Transfer
                     Money</a>
             </li>
             <li class="mb-2">
                 <a href="createexpense.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Create
                     Expense</a>
             </li>
             <li class="mb-2">
                 <a href="allexpense.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />All Expense</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />All Expense</a>
             </li>
             <li class="mb-2">
                 <a href="createdeposit.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Create
                     Deposit</a>
             </li>
             <li class="mb-2">
                 <a href="listdeposit.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />List Deposit</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />List Deposit</a>
             </li>
             <li class="mb-2">
                 <a href="expensecategory.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Expense
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Expense
                     Category</a>
             </li>
             <li class="mb-2">
                 <a href="depositcategory.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Deposit
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Deposit
                     Category</a>
             </li>
         </ul>
@@ -215,16 +215,16 @@
         <ul class="list-unstyled m-0 py-3 px-4 rounded-5">
             <li class="mb-2">
                 <a href="customer.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />All Customer</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />All Customer</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Create
                     Customer</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Blacklist
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Blacklist
                     Customer</a>
             </li>
         </ul>
@@ -233,16 +233,16 @@
         <ul class="list-unstyled m-0 py-3 px-4 rounded-5">
             <li class="mb-2">
                 <a href="vendor.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />All Vendor</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />All Vendor</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Create Vendors
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Create Vendors
                 </a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Blacklist
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Blacklist
                     Vendors</a>
             </li>
         </ul>
@@ -251,11 +251,11 @@
         <ul class="list-unstyled m-0 py-3 px-4 rounded-5">
             <li class="mb-2">
                 <a href="report.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />All Report</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />All Report</a>
             </li>
             <li class="mb-2">
                 <a href="warehousereport.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Warehouse
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Warehouse
                     Report</a>
             </li>
         </ul>
@@ -264,34 +264,34 @@
         <ul class="list-unstyled m-0 py-3 px-4 rounded-5">
             <li class="mb-2">
                 <a href="setting.html" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />System
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />System
                     Setting</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />User
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />User
                     Permission</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />SMS Setting</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />SMS Setting</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Email Setting</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Email Setting</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />POS Setting</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />POS Setting</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Payment
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Payment
                     Setting</a>
             </li>
             <li class="mb-2">
                 <a href="#" class="text-decoration-none nav-item nav-link"><img
-                        src="dasheets/img/menu.svg" class="img-fluid me-2" alt="" />Tax Setting</a>
+                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Tax Setting</a>
             </li>
         </ul>
     </div>

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\EmailVerifyController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,26 @@ Route::middleware(['verified','auth'])->group(function () {
         Route::get('profile', 'profile')->name('profile');
         Route::get('editprofile/{id}', 'profile')->name('edit.profile');
         Route::post('updateprofile/{id}', 'updateprofile')->name('update.profile');
+    });
+        
+    Route::controller(CategoryController::class)->prefix('category')->group(function () {
+        Route::get('create', 'create')->name('category.create');
+        Route::post('store', 'store')->name('category.store');
+        Route::get('index', 'index')->name('category.index');
+        Route::get('edit/{id}', 'edit')->name('category.edit');
+        Route::post('update/{id}', 'update')->name('category.update');
+        Route::delete('delete/{id}', 'destroy')->name('category.destroy');
+
+    });
+
+    Route::controller(ProductController::class)->prefix('products')->group(function () {
+        Route::get('', 'index')->name('products');
+        Route::get('create', 'create')->name('products.create');
+        Route::post('store', 'store')->name('products.store');
+        Route::get('show/{id}', 'show')->name('products.show');
+        Route::get('edit/{id}', 'edit')->name('products.edit');
+        Route::put('edit/{id}', 'update')->name('products.update');
+        Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
     });
 
 });
