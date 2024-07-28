@@ -82,8 +82,8 @@
                         src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-2" alt="" />Category</a>
             </li>
             <li class="mb-2">
-                <a href="brand.html" class="text-decoration-none nav-item nav-link"><img
-                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Brand</a>
+                <a href="{{ route('brands.index') }}" class="text-decoration-none nav-item nav-link"><img
+                        src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-2" alt="" />Brand</a>
             </li>
             <li class="mb-2">
                 <a href="unit.html" class="text-decoration-none nav-item nav-link"><img

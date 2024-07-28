@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\EmailVerifyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,12 +52,21 @@ Route::middleware(['verified','auth'])->group(function () {
     });
         
     Route::controller(CategoryController::class)->prefix('category')->group(function () {
-        Route::get('create', 'create')->name('category.create');
-        Route::post('store', 'store')->name('category.store');
         Route::get('index', 'index')->name('category.index');
+        Route::post('store', 'store')->name('category.store');
         Route::get('edit/{id}', 'edit')->name('category.edit');
         Route::post('update/{id}', 'update')->name('category.update');
         Route::delete('delete/{id}', 'destroy')->name('category.destroy');
+    });
+
+         
+    Route::controller(BrandController::class)->prefix('brands')->group(function () {
+        Route::get('create', 'create')->name('brands.create');
+        Route::post('store', 'store')->name('brands.store');
+        Route::get('index', 'index')->name('brands.index');
+        Route::get('edit/{id}', 'edit')->name('brands.edit');
+        Route::post('update/{id}', 'update')->name('brands.update');
+        Route::delete('delete/{id}', 'destroy')->name('brands.destroy');
 
     });
 
