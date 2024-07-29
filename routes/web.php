@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\EmailVerifyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\StripeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,6 @@ Route::middleware(['verified','auth'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-
     Route::controller(AuthController::class)->group(function () {
         Route::get('profile', 'profile')->name('profile');
         Route::get('editprofile/{id}', 'profile')->name('edit.profile');
@@ -59,7 +59,6 @@ Route::middleware(['verified','auth'])->group(function () {
         Route::delete('delete/{id}', 'destroy')->name('category.destroy');
     });
 
-         
     Route::controller(BrandController::class)->prefix('brands')->group(function () {
         Route::get('create', 'create')->name('brands.create');
         Route::post('store', 'store')->name('brands.store');
@@ -67,17 +66,19 @@ Route::middleware(['verified','auth'])->group(function () {
         Route::get('edit/{id}', 'edit')->name('brands.edit');
         Route::post('update/{id}', 'update')->name('brands.update');
         Route::delete('delete/{id}', 'destroy')->name('brands.destroy');
-
     });
 
     Route::controller(ProductController::class)->prefix('products')->group(function () {
-        Route::get('', 'index')->name('products');
+        Route::get('index', 'index')->name('products.index');
         Route::get('create', 'create')->name('products.create');
         Route::post('store', 'store')->name('products.store');
-        Route::get('show/{id}', 'show')->name('products.show');
         Route::get('edit/{id}', 'edit')->name('products.edit');
-        Route::put('edit/{id}', 'update')->name('products.update');
+        Route::post('edit/{id}', 'update')->name('products.update');
         Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
     });
 
+        // stripe payment
+        Route::get('payment-link/{id}', [StripeController::class, 'pay'])->name('pay');
+        Route::get('payment-link-stripe/{id}', [StripeController::class, 'paystripe'])->name('paystripe');
+        Route::post('payment-link-stripe/{id}', [StripeController::class, 'paystripestore'])->name('paystripestore');
 });

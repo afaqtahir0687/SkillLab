@@ -65,7 +65,7 @@
     <div id="product" style="display: none">
         <ul class="list-unstyled m-0 px-4 rounded-5">
             <li>
-                <a href="{{ url('products') }}" class="text-decoration-none nav-item nav-link"><img
+                <a href="{{ route('products.index') }}" class="text-decoration-none nav-item nav-link"><img
                         src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-2" alt="" />All Product</a>
             </li>
             <li class="mb-2">

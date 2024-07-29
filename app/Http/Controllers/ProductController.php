@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        // Eager load brand and category relationships
+        $products = Product::with(['brand', 'category'])->get();
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -19,7 +24,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $brands = Brand::all();
+        $categories = Category::all();
+        return view('products.create', compact('brands', 'categories'));
     }
 
     /**
@@ -27,7 +34,40 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+        'name' => 'required',
+        'brand_id' => 'required',
+        'category_id' => 'required',
+        'price' => 'required',
+        'currency' => 'required',
+        'quantity' => 'required',
+        'barcode' => 'nullable',
+        'description' => 'nullable',
+        'production_date' => 'nullable|date_format:d-m-Y',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        $product = new Product();
+        $product->name = $request->name;
+        $product->brand_id = $request->brand_id;
+        $product->category_id = $request->category_id;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->currency = $request->currency;
+        $product->quantity = $request->quantity;
+        $product->production_date = $request->date;
+        $product->barcode = $request->barcode;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            if ($image->isValid()) {
+                $imagePath = $image->store('assets/img', 'public');
+                $product->image = $imagePath;
+            } else {
+                return redirect()->back()->withErrors(['image' => 'The uploaded image is not valid.'])->withInput();
+            }
+        }
+        $product->save();
+        return redirect('products/index')->with('success', 'Product Created Successfully!');
     }
 
     /**
@@ -43,7 +83,10 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $brands = Brand::all();
+        $categories = Category::all();
+        $product = Product::where('id', $id)->first();
+        return view('products.edit', compact('brands', 'categories', 'product'));
     }
 
     /**
@@ -51,7 +94,40 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+        'name' => 'required',
+        'brand_id' => 'required',
+        'category_id' => 'required',
+        'price' => 'required',
+        'currency' => 'required',
+        'quantity' => 'required',
+        'barcode' => 'nullable',
+        'description' => 'nullable',
+        'production_date' => 'nullable',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->brand_id = $request->brand_id;
+        $product->category_id = $request->category_id;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->currency = $request->currency;
+        $product->quantity = $request->quantity;
+        $product->production_date = $request->date;
+        $product->barcode = $request->barcode;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            if ($image->isValid()) {
+                $imagePath = $image->store('assets/img', 'public');
+                $product->image = $imagePath;
+            } else {
+                return redirect()->back()->withErrors(['image' => 'The uploaded image is not valid.'])->withInput();
+            }
+        }
+        $product->save();
+        return redirect('products/index')->with('success', 'Product Updated Successfully!');
     }
 
     /**

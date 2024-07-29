@@ -134,34 +134,37 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="{{ route('category.update', $category->id) }}" method="POST" id="edit-category-form">
-            @csrf
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group mt-2">
-                  <label for="exampleFormControlSelect1" class="mb-1 fw-bold">Category Name <span
-                      class="text-danger">*</span></label>
-                  <input type="text" class="form-control subheading" name="category" value="{{ $category->category ?? '' }}" placeholder="Category Add" required />
+          @if(isset($category))
+            <form action="{{ route('category.update', $category->id) }}" method="POST" id="edit-category-form">
+              @csrf
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mt-2">
+                    <label for="exampleFormControlSelect1" class="mb-1 fw-bold">Category Name <span
+                        class="text-danger">*</span></label>
+                    <input type="text" class="form-control subheading" name="category" value="{{ $category->category ?? '' }}" placeholder="Category Add" required />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mt-2">
+                    <label for="exampleFormControlSelect1" class="mb-1 fw-bold">Category Code <span
+                        class="text-danger">*</span></label>
+                    <input type="number" class="form-control subheading" name="category_code" value="{{ $category->category_code ?? '' }}" placeholder="Category Code" required />
+                  </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group mt-2">
-                  <label for="exampleFormControlSelect1" class="mb-1 fw-bold">Category Code <span
-                      class="text-danger">*</span></label>
-                  <input type="number" class="form-control subheading" name="category_code" value="{{ $category->category_code ?? '' }}" placeholder="Category Code" required />
+              <div class="mt-4">
+                <label for="" class="fw-bold">Sub Categories</label>
+                <div id="tags" class="tags-container">
+                  <span class="tag default-tag">Placeholder</span>
+                  <span class="tag default-tag">Placeholder</span>
+                  <input type="text" id="search" name="sub_category" value="{{ $category->sub_category ?? '' }}"/>
                 </div>
               </div>
-            </div>
-            <div class="mt-4">
-              <label for="" class="fw-bold">Sub Categories</label>
-              <div id="tags" class="tags-container">
-                <span class="tag default-tag">Placeholder</span>
-                <span class="tag default-tag">Placeholder</span>
-                <input type="text" id="search" name="sub_category" value="{{ $category->sub_category ?? '' }}"/>
-              </div>
-            </div>
-            <button type="submit" class="btn save-btn text-white mt-4">Done</button>
-          </form>
+              <button type="submit" class="btn save-btn text-white mt-4">Done</button>
+            </form>
+          @endif
+
         </div>
       </div>
     </div>

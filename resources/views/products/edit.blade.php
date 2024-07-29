@@ -9,22 +9,24 @@
             <div class="col-md-8">
                 <div class="card rounded-3 border-0 card-shadow">
                     <div class="card-body">
-                        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group fw-bold">
                                     <label for="name">Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control subheading mt-2" name="name" placeholder="Name"/>
+                                    <input type="text" class="form-control subheading mt-2" name="name" value="{{ $product->name }}" placeholder="Name"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group fw-bold">
-                                    <label for="brand_id">Brand</label>
+                                <div class="form-group">
+                                    <label for="brand_id" class="fw-bold">Brand</label>
                                     <select class="form-control form-select subheading mt-1" name="brand_id" required>
                                         <option value="">Select Brand</option>
                                         @foreach($brands as $brand)
-                                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                            <option value="{{ $brand->id }}" {{ $product->brand_id == $brand->id ? 'selected' : '' }}>
+                                                {{ $brand->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -37,7 +39,9 @@
                                     <select class="form-control form-select subheading mt-2" name="category_id" required>
                                         <option value="">Select Category</option>
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                            <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                                                {{ $category->category }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -48,7 +52,9 @@
                                     <select class="form-control form-select subheading mt-2" name="sub_category_id" required>
                                         <option value="">Select Sub Category</option>
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->sub_category }}</option>
+                                            <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                                                {{ $category->sub_category }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -58,7 +64,7 @@
                             <div class="col-md-12">
                                 <div class="form-group fw-bold">
                                     <label for="description">Product Description</label>
-                                    <textarea placeholder="Products Description" class="form-control subheading" name="description" rows="5" required></textarea>
+                                    <textarea placeholder="Description" class="form-control subheading" name="description" rows="5" required>{{ $product->description }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -70,13 +76,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="price">Product Price<span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control subheading mt-2" name="price" placeholder="Price" required/>
+                                    <input type="number" class="form-control subheading mt-2" name="price" value="{{ $product->price }}" placeholder="Price" required/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="currency">Product Currency<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control subheading mt-2" name="currency" placeholder="Currency"/>
+                                    <input type="number" class="form-control subheading mt-2" name="currency" value="{{ $product->currency }}" placeholder="Currency"/>
                                 </div>
                             </div>
                         </div>  
@@ -90,13 +96,13 @@
                                 <div class="form-group">
                                     <label for="quantity">Product Quantity
                                         <span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control subheading mt-2" name="quantity" placeholder="Quantity"/>
+                                    <input type="number" class="form-control subheading mt-2" name="quantity" value="{{ $product->quantity }}" placeholder="Quantity"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="barcode">Product Code</label>
                                 <div class="input-group mt-1 subheading">
-                                    <input type="number" class="form-control subheading" name="barcode" placeholder="Barcode" id="productCode1" />
+                                    <input type="number" class="form-control subheading" name="barcode" value="{{ $product->barcode }}" placeholder="Barcode" id="productCode1" />
                                     <span class="input-group-text subheading" id="basic-addon2"><i class="bi bi-upc-scan"></i></span>
                                 </div>
                                 <p>Scan the barcode or symbology</p>
@@ -112,7 +118,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="date">Production Date<span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control subheading mt-2" name="date" placeholder="Date"/>
+                                    <input type="date" class="form-control subheading mt-2" name="date" value="{{ $product->production_date }}" placeholder="Date"/>
                                 </div>
                             </div>
                             {{-- <div class="col-md-6">
@@ -133,6 +139,9 @@
                     <div class="card-body">
                         <div class="file-upload">
                             <input class="file-input" type="file" name="image" multiple />
+                            @if($product->image)
+                                <img src="{{ asset('storage/'.$product->image) }}" class="img-fluid" alt="Current Image" />
+                            @endif
                             <img src="{{ asset('assets/img/upload-btn.svg') }}" class="img-fluid" alt="" />
                             <div class="mt-2 subheading">
                                 Drag and Drop to upload or

@@ -139,35 +139,37 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('brands.update', $brand->id) }}" id="edit_brand_form" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label for="name" class="mb-1">Brand Name <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control subheading" name="name" value="{{ $brand->name ?? '' }}"
-                                placeholder="Name" required />
-                        </div>
-                        <div class="form-group mt-2">
-                            <label for="description" class="mb-1">Brand Description</label>
-                            <textarea placeholder="Brand Description" class="form-control subheading" name="description"
-                                value="{{ $brand->description ?? '' }}" rows="3" required></textarea>
-                        </div>
+                    @if(isset($brand))
+                        <form action="{{ route('brands.update', $brand->id) }}" id="edit_brand_form" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group">
+                                <label for="name" class="mb-1">Brand Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control subheading" name="name" value="{{ $brand->name ?? '' }}"
+                                    placeholder="Name" required />
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="description" class="mb-1">Brand Description</label>
+                                <textarea placeholder="Brand Description" class="form-control subheading" name="description"
+                                    value="{{ $brand->description ?? '' }}" rows="3" required></textarea>
+                            </div>
 
-                        <div class="form-group mt-2">
-                            <label for="image" class="mb-1">Brand Image</label>
-                            <input type="file" class="form-control subheading" name="image" />
-                            <!-- Display current image -->
-                            @if($brand->image && Storage::exists('public/' . $brand->image))
-                            <img src="{{ asset('storage/' . $brand->image) }}" alt="Current Image"
-                                class="mt-2 current-image"
-                                style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" />
-                            @else
-                            <img src="{{ asset('storage/default-image.jpg') }}" alt="Default Image"
-                                class="mt-2 current-image"
-                                style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" />
-                            @endif
-                        </div>
-                        <button type="submit" class="btn save-btn text-white mt-4">Done</button>
-                    </form>
+                            <div class="form-group mt-2">
+                                <label for="image" class="mb-1">Brand Image</label>
+                                <input type="file" class="form-control subheading" name="image" />
+                                <!-- Display current image -->
+                                @if($brand->image && Storage::exists('public/' . $brand->image))
+                                <img src="{{ asset('storage/' . $brand->image) }}" alt="Current Image"
+                                    class="mt-2 current-image"
+                                    style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" />
+                                @else
+                                <img src="{{ asset('storage/default-image.jpg') }}" alt="Default Image"
+                                    class="mt-2 current-image"
+                                    style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" />
+                                @endif
+                            </div>
+                            <button type="submit" class="btn save-btn text-white mt-4">Done</button>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>
