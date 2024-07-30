@@ -82,7 +82,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="currency">Product Currency<span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control subheading mt-2" name="currency" value="{{ $product->currency }}" placeholder="Currency"/>
+                                    <input type="text" class="form-control subheading mt-2" name="currency" value="{{ $product->currency }}" placeholder="Currency"/>
                                 </div>
                             </div>
                         </div>  

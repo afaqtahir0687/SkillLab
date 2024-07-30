@@ -43,7 +43,7 @@ class ProductController extends Controller
         'quantity' => 'required',
         'barcode' => 'nullable',
         'description' => 'nullable',
-        'production_date' => 'nullable|date_format:d-m-Y',
+        'production_date' => 'nullable',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
@@ -67,7 +67,7 @@ class ProductController extends Controller
             }
         }
         $product->save();
-        return redirect('products/index')->with('success', 'Product Created Successfully!');
+        return redirect('products/index')->with('Success', 'Product Created Successfully!');
     }
 
     /**
@@ -75,8 +75,11 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
+        $product = Product::with(['brand', 'category'])->find($id);
+            if (!$product) {
+                return redirect()->route('products.index')->with('error', 'Product not found!');
+            }
+        return view('products.show', compact('product'));    }
 
     /**
      * Show the form for editing the specified resource.
@@ -127,7 +130,7 @@ class ProductController extends Controller
             }
         }
         $product->save();
-        return redirect('products/index')->with('success', 'Product Updated Successfully!');
+        return redirect('products/index')->with('Success', 'Product Updated Successfully!');
     }
 
     /**
@@ -135,6 +138,11 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        if ($product) {
+            $product->delete();
+            return redirect()->route('products.index')->with('Success', 'Product Deleted Successfully!');
+        }
+        return redirect()->route('products.index')->with('error', 'Product not found!');
     }
 }

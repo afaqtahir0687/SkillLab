@@ -12,7 +12,7 @@
                     <div class="row my-3">
                         <div class="col-md-3 col-12 mt-2">
                             <div class="input-search position-relative">
-                                <input type="text" placeholder="Search Table" class="form-control rounded-3 subheading" />
+                                <input type="text" placeholder="Search Table" id="search-input" class="form-control rounded-3 subheading" />
                                 <span class="fa fa-search search-icon text-secondary"></spanclass=>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table text-center">
+                    <table class="table text-center" id="table">
                         <thead>
                             <tr>
                                 <th class="text-secondary">
@@ -61,7 +61,7 @@
                                         style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" />
                                     @endif
                                 </td>
-                                <td class="align-middle">{{ \Carbon\Carbon::parse($product->production_date)->format('d-M-Y') }}</td>
+                                <td class="align-middle">{{ $product->production_date }}</td>
                                 <td class="align-middle">{{ $product->name }}</td>
                                 <td class="align-middle">{{ $product->brand->name }}</td>
                                 <td class="align-middle">{{ $product->category->category }}</td>
@@ -76,17 +76,17 @@
                                         </a>
                 
                                         <div class="dropdown-menu p-2 ps-0" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="productdetail.html">
+                                        <a class="dropdown-item" href="{{ route('products.show', $product->id) }}">
                                             <img src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-1" alt=""/>
                                             Product Detail
                                         </a>
                                         <a class="dropdown-item" href="{{ route('pay', $product->id) }}">
                                             <img src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-1" alt=""/>
-                                            Edit Quotation
+                                            Edit Payment
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('products.create') }}">
+                                        <a class="dropdown-item" href="{{ route('products.edit', $product->id) }}">
                                             <img src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-1" alt=""/>
-                                            Create Product
+                                            Edit Product
                                         </a>
                                         <a class="dropdown-item" href="createproduct.html">
                                             <img src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-1" alt=""/>
@@ -100,10 +100,11 @@
                                             <img src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-1" alt=""/>
                                             SMS Notification
                                         </a>
-                                        <a class="dropdown-item confirm-text" data-bs-toggle="modal" data-bs-target="#exampleModal-delete" href="#">
+                                        <a class="dropdown-item confirm-text" href="#" data-bs-toggle="modal" data-bs-target="#deleteProductsModal" onclick="setDeleteId({{$product->id}})">
                                             <img src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-1" alt=""/>
                                             Delete Quotation
                                         </a>
+                                       
                                         </div>
                                     </div>
                                 </td>
@@ -115,5 +116,56 @@
             </div>
         </div>
     </div>
+    <!-- STart Delete Products Modal -->
+    <div class="modal fade" id="deleteProductsModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center p-4">
+            <h3 class="all-adjustment border-0 text-center pb-2 mb-0 w-100">
+                <b>Are you sure to delete this row? </b>
+            </h3>
+            <p class="subheading">
+                You would not be able to revert these changes once deleted
+            </p>
+            <form id="deleteForm" method="POST" action="">
+                @csrf
+                @method('DELETE')
+                <input type="hidden" name="id" id="productId" value="">
+                <button type="submit" class="btn delete-btn text-white">Delete</button>
+                <button class="btn save-btn text-white" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- End Delete Products Modal -->
 
+    <!-- STart Delete Script -->
+    <script>
+    function setDeleteId(id) {
+            document.getElementById('productId').value = id;
+            document.getElementById('deleteForm').action = '{{ route('products.destroy', '') }}/' + id;
+        }
+    </script>
+    <script>
+        $('#deleteForm .save-btn').on('click', function(event) {
+        event.preventDefault();
+        $('#deleteForm').find('input[name="id"]').val('');
+    });
+    </script>
+    <!-- End Delete Script -->
+
+    <!-- STart Filter Products Script -->
+  <script>
+    $(document).ready(function() {
+      $('#search-input').on('keyup', function() {
+          var value = $(this).val().toLowerCase();
+          $('#table tr').show().filter(function() {
+              var rowText = $(this).text().toLowerCase();
+              return !rowText.includes(value);
+          }).hide();
+      });
+    });
+  </script>
+  <!-- STart Filter Products Script -->
 @endsection

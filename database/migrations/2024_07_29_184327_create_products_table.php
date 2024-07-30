@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('barcode')->nullable();
             $table->integer('quantity')->nullable();
-            $table->integer('order_no')->nullable();
+            $table->string('order_no')->nullable();
             $table->date('production_date')->nullable();
             $table->boolean('is_active')->default(true);
             $table->foreignId('brand_id')->constrained('brands')->onDelete('cascade');

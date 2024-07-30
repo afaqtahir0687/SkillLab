@@ -73,12 +73,14 @@ Route::middleware(['verified','auth'])->group(function () {
         Route::get('create', 'create')->name('products.create');
         Route::post('store', 'store')->name('products.store');
         Route::get('edit/{id}', 'edit')->name('products.edit');
+        Route::get('show/{id}', 'show')->name('products.show');
         Route::post('edit/{id}', 'update')->name('products.update');
         Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
     });
 
-        // stripe payment
+        //******/ stripe payment ******//
         Route::get('payment-link/{id}', [StripeController::class, 'pay'])->name('pay');
         Route::get('payment-link-stripe/{id}', [StripeController::class, 'paystripe'])->name('paystripe');
-        Route::post('payment-link-stripe/{id}', [StripeController::class, 'paystripestore'])->name('paystripestore');
+        Route::post('payment-link-paypal/{id}', [StripeController::class, 'paystripestore'])->name('paypalstore');
+
 });

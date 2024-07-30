@@ -43,7 +43,7 @@
                         <h4>Pay</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('paystripestore', ['id' => $id]) }}" method="POST" id="subscribe-form">
+                        <form action="{{ route('paypalstore', ['id' => $id]) }}" method="POST" id="subscribe-form">
                             @csrf
                             <!-- <div class="form-group">
                             <label for="amount">Amount</label>
