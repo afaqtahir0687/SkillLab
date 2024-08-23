@@ -74,10 +74,6 @@
                     Product</a>
             </li>
             <li class="mb-2">
-                <a href="printlable.html" class="text-decoration-none nav-item nav-link"><img
-                        src="assets/img/menu.svg" class="img-fluid me-2" alt="" />Print Label</a>
-            </li>
-            <li class="mb-2">
                 <a href="{{ route('category.index') }}" class="text-decoration-none nav-item nav-link"><img
                         src="{{ asset('assets/img/menu.svg') }}" class="img-fluid me-2" alt="" />Category</a>
             </li>

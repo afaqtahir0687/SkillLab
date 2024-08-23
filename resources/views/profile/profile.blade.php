@@ -420,12 +420,12 @@
                                     <button class="tablinks d-flex justify-content-between" id="defaultOpen"
                                         onclick="openCity(event, 'Personal-Info')">
                                         Profile Info
-                                        <img src="assets/img/profile-info.svg" alt="" />
+                                        <img src="{{ asset('assets/img/profile-info.svg') }}" alt="" />
                                     </button>
                                     <button class="tablinks d-flex justify-content-between mt-2"
                                         onclick="openCity(event, 'Change-password')">
                                         Change Password
-                                        <img src="assets/img/change-password.svg" alt="" />
+                                        <img src="{{ asset('assets/img/change-password.svg') }}" alt="" />
                                     </button>
                                 </div>
                             </div>
@@ -582,7 +582,7 @@
                                                 <div class="password-container">
                                                     <input type="password" class="form-control subheading"
                                                         placeholder="********" />
-                                                    <img src="assets/img/profile-changed-password.svg"
+                                                    <img src="{{ asset('assets/img/profile-changed-password.svg') }}"
                                                         class="password-toggle pe-2"
                                                         onclick="togglePasswordVisibility(this)" alt="" />
                                                 </div>
