@@ -23,7 +23,8 @@
                                     class="bi bi-file-earmark-text"></i></a>
                             <a href="#" class="btn pdf rounded-3 mt-2">Pdf <i class="bi bi-file-earmark"></i></a>
                             <a href="{{ route('products.create') }}" class="btn create-btn rounded-3 mt-2">Create <i
-                                    class="bi bi-plus-lg"></i></a>
+                         
+                                class="bi bi-plus-lg"></i></a>
                         </div>
                     </div>
                 </div>
